@@ -27,22 +27,6 @@ def scrape(subreddit):
             users1.append(comment.author)
 
     return users1
-'''
-def scrapeSecond(subreddit2):
-
-    users2 = []
-
-    for submission2 in subreddit2.top(time_filter='week', limit=5):
-        users2.append(submission2.author)
-        print(submission2.permalink)
-        for comment in submission2.comments:
-            if isinstance(comment, MoreComments):
-                continue
-            users2.append(comment.author)
-    
-    return users2
-
-'''
 
 firstSub = reddit.subreddit(input('Enter the name of the first subreddit: '))
 secondSub = reddit.subreddit(input('Enter the name of the second subreddit: '))
