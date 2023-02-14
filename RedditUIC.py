@@ -14,11 +14,11 @@ reddit = praw.Reddit(
     user_agent = REDDIT_USER_AGENT,
 )
 
-def scrapeFirst(subreddit1):
+def scrape(subreddit):
 
     users1 = []
 
-    for submission1 in subreddit1.top(time_filter='week', limit=5):
+    for submission1 in subreddit.top(time_filter='week', limit=5):
         users1.append(submission1.author)
         print(submission1.permalink)
         for comment in submission1.comments:
@@ -27,7 +27,7 @@ def scrapeFirst(subreddit1):
             users1.append(comment.author)
 
     return users1
-
+'''
 def scrapeSecond(subreddit2):
 
     users2 = []
@@ -42,14 +42,16 @@ def scrapeSecond(subreddit2):
     
     return users2
 
+'''
+
 firstSub = reddit.subreddit(input('Enter the name of the first subreddit: '))
 secondSub = reddit.subreddit(input('Enter the name of the second subreddit: '))
 
 print('subreddit1: ' + firstSub.display_name)
 print('subreddit2: ' + secondSub.display_name)
 
-result1 = scrapeFirst(firstSub)
-result2 = scrapeSecond(secondSub)
+result1 = scrape(firstSub)
+result2 = scrape(secondSub)
 
 print('\nList 1\n', result1)
 print('\nList 2\n', result2)
