@@ -16,17 +16,17 @@ reddit = praw.Reddit(
 
 def scrape(subreddit):
 
-    users1 = []
+    users = []
 
-    for submission1 in subreddit.top(time_filter='week', limit=5):
-        users1.append(submission1.author)
-        print(submission1.permalink)
-        for comment in submission1.comments:
+    for submission in subreddit.top(time_filter='week', limit=10):
+        users.append(submission.author)
+        print(submission.permalink)
+        for comment in submission.comments:
             if isinstance(comment, MoreComments):
                 continue
-            users1.append(comment.author)
+            users.append(comment.author)
 
-    return users1
+    return users
 
 firstSub = reddit.subreddit(input('Enter the name of the first subreddit: '))
 secondSub = reddit.subreddit(input('Enter the name of the second subreddit: '))
@@ -40,6 +40,6 @@ result2 = scrape(secondSub)
 print('\nList 1\n', result1)
 print('\nList 2\n', result2)
 
-common_list = set(result1).intersection(result2)
+commonList = set(result1).intersection(result2)
 
-print('\nUsers in common: ', common_list)
+print('\nUsers in common: ', commonList)
