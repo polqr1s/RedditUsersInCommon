@@ -43,3 +43,7 @@ print('\nList 2\n', result2)
 commonList = set(result1).intersection(result2)
 
 print('\nUsers in common: ', commonList)
+
+with open('uic_output.txt', 'a') as output:
+    output.write('First subreddit: ' + str(firstSub) + '\nSecond subreddit: '+str(secondSub) + '\nList 1\n' + 
+                 str(result1) + '\nList 2\n' +str(result2) + '\nUsers in common:\n' + str(commonList) + '\n\n')
